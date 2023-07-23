@@ -1,0 +1,1 @@
+# teal--architecture-competition
