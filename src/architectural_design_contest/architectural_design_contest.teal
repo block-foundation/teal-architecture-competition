@@ -1,0 +1,64 @@
+#pragma version 3
+
+// Check if the transaction is the first one (initialization)
+txn GroupIndex
+int 0
+==
+bnz initialization
+
+// Check for design submission
+global LatestTimestamp
+byte "deadline"
+app_global_get
+<
+bnz submit_design
+
+// Check for winner selection and prize distribution
+txn GroupIndex
+int 1
+==
+bnz select_winner
+
+// Initialization
+initialization:
+    // Check that the application is being created
+    txn TypeEnum
+    int appl
+    ==
+    txn OnCompletion
+    int NoOp
+    ==
+    &&
+    // Set the prize and deadline from the transaction's arguments
+    byte "prize"
+    txn ApplicationArgs 0
+    app_global_put
+
+    byte "deadline"
+    txn ApplicationArgs 1
+    app_global_put
+    return
+
+submit_design:
+    // Store the design ID (or link) from the note field to the designer's address
+    txn Sender
+    txn Note
+    app_local_put
+    return
+
+select_winner:
+    // The owner selects a winner
+    txn TypeEnum
+    int pay
+    ==
+    txn CloseRemainderTo
+    byte "winner_address"
+    app_global_get
+    ==
+    &&
+    txn Amount
+    byte "prize"
+    app_global_get
+    ==
+    &&
+    return
