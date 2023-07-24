@@ -1,37 +1,103 @@
-# teal--architecture-competition
+<div align="right">
 
+  [![license](https://img.shields.io/github/license/block-foundation/teal-architecture-competition?color=green&label=license&style=flat-square)](LICENSE.md)
+  ![stars](https://img.shields.io/github/stars/block-foundation/teal-architecture-competition?color=blue&label=stars&style=flat-square)
+  ![contributors](https://img.shields.io/github/contributors/block-foundation/teal-architecture-competition?color=blue&label=contributors&style=flat-square)
 
-
-
-
-
-
-
-In this PyTeal code, we're defining the basic structure for a smart contract:
-
-When the smart contract is initialized, we're setting up hasVoted and voteCount local states for the account with a 0 value.
-There are different branches in the contract logic depending on whether it's the first time the contract is being called (i.e., it's being initialized), the contract is being updated, a user is voting, or a user is querying the current vote count.
-In the vote branch, we're asserting that the user has not voted before, then updating the hasVoted and voteCount states.
-In the vote count query branch, we're simply returning the current vote count.
-This is a simplified contract and lacks a lot of the functionality and security features the Solidity version has, such as an entry fee, deadline enforcement, and winner declaration.
-
-Please note that converting a Solidity contract to PyTeal is not straightforward due to the differences in the languages. For instance, TEAL is a stack-based language and doesn't have built-in support for things like arrays or complex data structures, whereas Solidity is a Turing-complete language with support for a wide variety of complex data types and operations.
-
-This is a basic implementation and the specific use case and the complexity of the smart contract could lead to major differences in the PyTeal version. PyTeal and Algorand do not currently support all the features available in Ethereum and Solidity. It is recommended to check Algorand's capabilities before trying to implement a complex smart contract.
-
-
+</div>
 
 ---
 
+<div>
+    <img align="right" src="https://raw.githubusercontent.com/block-foundation/brand/master/logo/logo_gray.png" width="96" alt="Block Foundation Logo">
+    <h1 align="left">Decentralized Architectural Competition</h1>
+    <h3 align="left">Block Foundation Smart Contract Series [Teal]</h3>
+</div>
 
-Expanding on the PyTeal contract to handle similar functionality as in the Solidity contract, we can define states to count votes for multiple entries, and to check whether voting is still open.
+---
 
-However, due to the limited functionality of TEAL/PyTeal compared to Solidity (e.g., lack of loops, complex data structures, and contract-triggered transactions), we cannot directly convert the Solidity contract. Specifically, winner declaration and automatic money distribution can't be handled directly within the smart contract in PyTeal. This will have to be an off-chain process handled by the organizer's software.
+<div>
+<img align="right" width="75%" src="https://raw.githubusercontent.com/block-foundation/brand/master/image/repository_cover/block_foundation-structure-03-accent.jpg"  alt="Block Foundation">
+<br>
+<details open="open">
+<summary>Table of Contents</summary>
+  
+- [Introduction](#style-guide)
+- [Quick Start](#quick-start)
+- [Contract](#contract)
+- [Development Resources](#development-resources)
+- [Legal Information](#legal-information)
+  - [Copyright](#copyright)
+  - [License](#license)
+  - [Warning](#warning)
+  - [Disclaimer](#disclaimer)
 
-Here's an expanded example which allows multiple entries and voting, but doesn't handle the winner declaration or prize distribution:
+</details>
+</div>
+
+<br clear="both"/>
+
+## Introduction
+
+Welcome to the Decentralized Architectural Competition project! This groundbreaking initiative embraces the power of blockchain technology to facilitate an architectural design competition, offering a transparent, secure, and inclusive platform.
+
+The project leverages Ethereum's and Algorand's smart contracts to handle competition entries, voting, and declaration of the winner. It demonstrates how traditional architectural competitions can be transformed using blockchain technology, which ensures an immutable, secure, and decentralized system for both the organizers and the participants.
+
+In our system, each participant submits their architectural design by interacting with the smart contract, which also requires them to pay an entry fee, thereby effectively registering them for the competition. Participants' entries are stored on the blockchain, ensuring their immutability and transparency.
+
+Voting is also carried out through the smart contract, allowing a transparent tally of votes for each entry. The system is designed such that each participant gets one vote, and they cannot vote after a pre-specified deadline.
+
+Moreover, our project also includes an automatic prize distribution system. Once the voting deadline has been reached and votes are tallied, the prize money (accumulated from entry fees) is automatically transferred to the winner's account, ensuring a prompt reward system.
+
+This project is a showcase of how we can harness blockchain's potential to transform various sectors, including architecture and design. The system's fairness, transparency, and security make it an exciting development for future architectural competitions, where decentralized systems can pave the way for global participation and unbiased results.
+
+The following sections will delve deeper into the technicalities of our Ethereum and Algorand smart contracts, providing a comprehensive understanding of the project's inner workings. Join us in revolutionizing architectural competitions!
+
+## Quick Start
 
 
+## Contract
 
-This version of the contract allows for submitting entries and voting for them. Entry names and votes are stored in the global state of the contract. Voting is open for one week from the time of contract deployment. Please note, entry names are passed as arguments to the submit and vote functions, so the organizer's off-chain software will need to keep track of these.
+This contract allows for submitting entries and voting for them. Entry names and votes are stored in the global state of the contract. Voting is open for one week from the time of contract deployment. Please note, entry names are passed as arguments to the submit and vote functions, so the organizer's off-chain software will need to keep track of these.
 
 Remember, TEAL is not Turing-complete and has many limitations compared to Solidity, so some complex or specific functionality might not be possible. Always make sure to thoroughly test your smart contract before deploying it to production.
+
+## Development Resources
+
+### Other Repositories
+
+#### Block Foundation Smart Contract Series
+
+|                                   | `Solidity`  | `Teal`      |
+| --------------------------------- | ----------- | ----------- |
+| **Template**                      | [**>>>**](https://github.com/block-foundation/solidity-template) | [**>>>**](https://github.com/block-foundation/teal-template) |
+| **Architectural Design**          | [**>>>**](https://github.com/block-foundation/solidity-architectural-design) | [**>>>**](https://github.com/block-foundation/teal-architectural-design) |
+| **Architecture Competition**      | [**>>>**](https://github.com/block-foundation/solidity-architecture-competition) | [**>>>**](https://github.com/block-foundation/teal-architecture-competition) |
+| **Housing Cooporative**           | [**>>>**](https://github.com/block-foundation/solidity-housing-cooperative) | [**>>>**](https://github.com/block-foundation/teal-housing-cooperative) |
+| **Land Registry**                 | [**>>>**](https://github.com/block-foundation/solidity-land-registry) | [**>>>**](https://github.com/block-foundation/teal-land-registry) |
+| **Real-Estate Crowdfunding**      | [**>>>**](https://github.com/block-foundation/solidity-real-estate-crowdfunding) | [**>>>**](https://github.com/block-foundation/teal-real-estate-crowdfunding) |
+| **Rent-to-Own**                   | [**>>>**](https://github.com/block-foundation/solidity-rent-to-own) | [**>>>**](https://github.com/block-foundation/teal-rent-to-own) |
+| **Self-Owning Building**          | [**>>>**](https://github.com/block-foundation/solidity-self-owning-building) | [**>>>**](https://github.com/block-foundation/teal-self-owning-building) |
+| **Smart Home**                    | [**>>>**](https://github.com/block-foundation/solidity-smart-home) | [**>>>**](https://github.com/block-foundation/teal-smart-home) |
+
+## Legal Information
+
+### Copyright
+
+Copyright 2023, [Stichting Block Foundation](https://www.blockfoundation.io). All rights reserved.
+
+### License
+
+Except as otherwise noted, the content in this repository is licensed under the
+[Creative Commons Attribution 4.0 International (CC BY 4.0) License](https://creativecommons.org/licenses/by/4.0/), and
+code samples are licensed under the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0).
+
+Also see [LICENSE](https://github.com/block-foundation/community/blob/master/LICENSE) and [LICENSE-CODE](https://github.com/block-foundation/community/blob/master/LICENSE-CODE).
+
+### Warning
+
+**Please note that this code should be audited by a professional smart-contract auditor before being used in a production environment as it is a simplified example and may not cover all potential security vulnerabilities.**
+
+### Disclaimer
+
+**THIS SOFTWARE IS PROVIDED AS IS WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
