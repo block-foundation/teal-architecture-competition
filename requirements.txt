@@ -3,7 +3,7 @@ attrs==21.2.0
 black==21.11b1
 cffi==1.15.0
 click==8.0.3
-colorama==0.4.4
+colorama==0.4.6
 iniconfig==1.1.1
 msgpack==1.0.3
 mypy==0.910
